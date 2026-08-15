@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Puppy Shopping List — SedgysMiniMe: Doggie Devotion</title>
+<meta name="description" content="A categorised, walk-through shopping list for new SedgysMiniMe puppy owners — crates, pens, feeding, toileting, toys, grooming, worming and more.">
+<link rel="icon" href="heart-logo.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F7F2E7;
+    --cream-deep:#EEE4CE;
+    --ink:#241F1B;
+    --ink-soft:#5C5648;
+    --navy:#153A5B;
+    --navy-deep:#0D283F;
+    --peach:#E2A97E;
+    --peach-deep:#C77F4F;
+    --moss:#57683F;
+    --moss-deep:#414F32;
+    --brown:#6B3B2C;
+    --card:#FFFFFF;
+    --line:#E4D9BE;
+    --radius:14px;
+    --shadow: 0 8px 22px -10px rgba(21,58,91,0.28);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Public Sans', system-ui, sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    color:var(--navy-deep);
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- Top bar ---------- */
+  .topbar{padding:22px 0 0;}
+  .brand{
+    display:flex; align-items:center; gap:10px;
+  }
+  .brand img{width:38px; height:38px; object-fit:contain;}
+  .brand span{
+    font-family:'Fraunces', serif; font-weight:600; font-size:15px;
+    letter-spacing:0.02em; text-transform:uppercase; color:var(--navy-deep); opacity:0.85;
+  }
+
+  /* ---------- Hero (cover-page style) ---------- */
+  .hero{padding:18px 0 0; text-align:center;}
+  .hero-image{max-width:760px; margin:0 auto; width:100%;}
+  .hero-image img{width:100%; height:auto;}
+  .eyebrow{
+    font-size:13px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--peach-deep); margin:26px 0 10px;
+  }
+  .hero h1{
+    font-size:clamp(34px, 6vw, 58px);
+    margin:0 0 16px;
+    line-height:1.05;
+  }
+  .hero .lede{
+    max-width:56ch; margin:0 auto 26px;
+    font-size:17.5px; color:var(--ink-soft);
+  }
+  .licence-box{
+    display:inline-block;
+    background:var(--navy);
+    color:#F3ECDC;
+    padding:14px 30px;
+    border-radius:10px;
+    margin:4px auto 30px;
+    box-shadow:var(--shadow);
+  }
+  .licence-box .lb-title{font-family:'Fraunces', serif; font-weight:600; font-size:16px; color:#fff;}
+  .licence-box .lb-sub{font-size:12.5px; color:#C7D3DC; margin-top:3px;}
+
+  .cta-row{display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:center; margin-bottom:34px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:13px 24px;
+    border-radius:999px;
+    font-weight:600;
+    font-size:15px;
+    text-decoration:none;
+    border:1.5px solid transparent;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-navy{background:var(--navy); color:#fff; box-shadow:var(--shadow);}
+  .btn-navy:hover{background:var(--navy-deep);}
+  .btn-ghost{background:transparent; color:var(--navy-deep); border-color:var(--navy);}
+  .btn-ghost:hover{background:var(--navy); color:#fff;}
+
+  .hero-stats{
+    display:flex; gap:36px; justify-content:center; flex-wrap:wrap;
+    padding-bottom:36px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-stats div span.num{display:block; font-family:'Fraunces',serif; font-size:26px; font-weight:600; color:var(--navy-deep);}
+  .hero-stats div span.lbl{font-size:12px; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-soft);}
+
+  /* ---------- Trail nav ---------- */
+  .trail-nav-wrap{
+    position:sticky; top:0; z-index:40;
+    background:rgba(247,242,231,0.96);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .trail-nav{
+    display:flex; gap:8px; overflow-x:auto;
+    padding:12px 24px;
+    max-width:1080px; margin:0 auto;
+    scrollbar-width:none;
+  }
+  .trail-nav::-webkit-scrollbar{display:none;}
+  .trail-chip{
+    flex:0 0 auto;
+    display:flex; align-items:center; gap:7px;
+    padding:9px 16px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:8px;
+    font-size:13.5px;
+    font-weight:600;
+    color:var(--ink-soft);
+    text-decoration:none;
+    white-space:nowrap;
+    transition:background .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .trail-chip .ic{font-size:15px;}
+  .trail-chip:hover, .trail-chip.active{
+    background:var(--navy);
+    border-color:var(--navy);
+    color:#fff;
+  }
+
+  /* ---------- Intro note ---------- */
+  .intro{padding:40px 0 8px;}
+  .intro .card-note{
+    background:var(--cream-deep);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:20px 24px;
+    font-size:15px;
+    color:var(--ink-soft);
+  }
+  .intro .card-note strong{color:var(--ink);}
+  .intro h2.section-lead{
+    font-size:15px; text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--brown); font-weight:700; font-family:'Public Sans',sans-serif;
+    margin:0 0 6px;
+  }
+
+  /* ---------- Category sections ---------- */
+  .category{padding:52px 0 8px; scroll-margin-top:74px;}
+  .category-head{
+    display:flex; align-items:baseline; gap:14px;
+    margin-bottom:6px;
+    border-bottom:2px solid var(--line);
+    padding-bottom:14px;
+  }
+  .category-head .ic{font-size:26px;}
+  .category-head h2{font-size:26px; margin:0;}
+  .category-count{
+    margin-left:auto;
+    font-family:'Public Sans',sans-serif;
+    font-size:13px; color:var(--ink-soft);
+    background:var(--cream-deep);
+    padding:4px 10px; border-radius:999px;
+  }
+  .category-desc{color:var(--ink-soft); font-size:15px; margin:14px 0 22px; max-width:70ch;}
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(258px, 1fr));
+    gap:16px;
+    margin-bottom:8px;
+  }
+  .item-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:18px 18px 16px;
+    display:flex; flex-direction:column; gap:10px;
+    box-shadow:0 2px 8px -6px rgba(21,58,91,0.18);
+    transition:box-shadow .15s ease, transform .15s ease;
+  }
+  .item-card:hover{box-shadow:var(--shadow); transform:translateY(-2px);}
+  .item-card.checked{opacity:0.55;}
+  .item-top{display:flex; align-items:flex-start; gap:10px;}
+  .check{
+    flex:0 0 auto;
+    width:22px; height:22px;
+    border:2px solid var(--moss);
+    border-radius:6px;
+    cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    color:#fff; font-size:13px; font-weight:700;
+    background:transparent;
+    margin-top:2px;
+  }
+  .check.on{background:var(--moss);}
+  .item-name{font-weight:700; font-size:15.5px; line-height:1.3;}
+  .item-note{font-size:13.5px; color:var(--ink-soft); flex-grow:1;}
+  .item-foot{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:2px;}
+  .tag{
+    font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em;
+    padding:3px 8px; border-radius:999px;
+    background:var(--cream-deep); color:var(--ink-soft);
+  }
+  .tag.amz{background:#FBEADB; color:var(--peach-deep);}
+  .tag.other{background:#EAF0E3; color:var(--moss-deep);}
+  .view-link{
+    font-size:13.5px; font-weight:700; color:var(--navy);
+    text-decoration:none; display:inline-flex; align-items:center; gap:4px;
+  }
+  .view-link:hover{color:var(--peach-deep);}
+  .view-link .arr{transition:transform .15s ease;}
+  .view-link:hover .arr{transform:translateX(2px);}
+
+  /* ---------- Footer ---------- */
+  footer{
+    margin-top:64px;
+    background:var(--navy-deep);
+    color:#D7DEE3;
+    padding:44px 0 34px;
+  }
+  .foot-brand{display:flex; align-items:center; gap:10px; margin-bottom:18px;}
+  .foot-brand img{width:34px; height:34px; object-fit:contain;}
+  .foot-brand span{font-family:'Fraunces',serif; font-weight:600; color:#fff; font-size:16px;}
+  footer p{font-size:14px; line-height:1.7; color:#B7C1C9; max-width:70ch;}
+  footer a.foot-link{color:var(--peach); text-decoration:none; font-weight:600;}
+  footer a.foot-link:hover{text-decoration:underline;}
+  .disclosure{
+    margin-top:26px; padding-top:22px; border-top:1px solid rgba(255,255,255,0.12);
+    font-size:12.5px; color:#84909A; line-height:1.7;
+  }
+
+  @media (max-width:640px){
+    .category{padding:38px 0 4px;}
+    .category-head{flex-wrap:wrap;}
+    .category-count{margin-left:0;}
+    .licence-box{padding:12px 20px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar wrap">
+  <div class="brand">
+    <img src="heart-logo.webp" alt="SedgysMiniMe heart logo">
+    <span>SedgysMiniMe — Doggie Devotion</span>
+  </div>
+</div>
+
+<section class="hero wrap">
+  <div class="hero-image">
+    <img src="hero-schnauzer.webp" alt="Silhouette of a Schnauzer sitting among reeds at sunset">
+  </div>
+  <p class="eyebrow">Everything from the owner's guide, in one place</p>
+  <h1>The Puppy Shopping List</h1>
+  <p class="lede">Laid out by room &amp; need<br>Shop once, calmly, instead of hunting through scores of items<br>Every item here is something I use and recommend myself</p>
+
+  <div class="licence-box">
+    <div class="lb-title">SedgysMiniMe · Doggie Devotion</div>
+    <div class="lb-sub">Dumfries &amp; Galloway Council Breeding Establishment Licence No: 001673</div>
+  </div>
+
+  <div class="cta-row">
+    <a class="btn btn-navy" href="https://www.amazon.co.uk/shop/sedgysminimedoggiedevotion/list/2W8XPB7NEIOUG?ref_=aipsflist" target="_blank" rel="noopener sponsored">Browse the full Amazon storefront →</a>
+    <a class="btn btn-ghost" href="https://www.sedgysminime.com/" target="_blank" rel="noopener">Back to sedgysminime.com</a>
+  </div>
+
+  <div class="hero-stats">
+    <div><span class="num">12</span><span class="lbl">Categories</span></div>
+    <div><span class="num">45+</span><span class="lbl">Recommended items</span></div>
+    <div><span class="num">0</span><span class="lbl">Guesswork</span></div>
+  </div>
+</section>
+
+<div class="trail-nav-wrap">
+  <nav class="trail-nav" id="trailNav" aria-label="Jump to category">
+    <a class="trail-chip" href="#sleeping"><span class="ic">🛏️</span>Sleeping &amp; Bedding</a>
+    <a class="trail-chip" href="#travel"><span class="ic">🚗</span>Travel</a>
+    <a class="trail-chip" href="#walking"><span class="ic">🦮</span>Collar, Harness &amp; Lead</a>
+    <a class="trail-chip" href="#toileting"><span class="ic">🚽</span>Toileting</a>
+    <a class="trail-chip" href="#feeding"><span class="ic">🍽️</span>Feeding</a>
+    <a class="trail-chip" href="#play"><span class="ic">🧸</span>Toys for Playing</a>
+    <a class="trail-chip" href="#teething"><span class="ic">🦴</span>Teething &amp; Dental</a>
+    <a class="trail-chip" href="#chews"><span class="ic">🍖</span>Chews &amp; Treats</a>
+    <a class="trail-chip" href="#training"><span class="ic">🎯</span>Training &amp; Bonding</a>
+    <a class="trail-chip" href="#parasites"><span class="ic">🐛</span>Worming &amp; Parasites</a>
+    <a class="trail-chip" href="#grooming"><span class="ic">✂️</span>Grooming</a>
+    <a class="trail-chip" href="#firstaid"><span class="ic">🩹</span>First Aid</a>
+  </nav>
+</div>
+
+<main class="wrap">
+
+  <section class="intro">
+    <div class="card-note">
+      <h2 class="section-lead">Before you shop</h2>
+      This is a guide, not a requirement — you don't need to buy every single item, and you may well prefer your own puppy shopping trip. Tap any card's checkbox as you go; it'll grey out to show you've ticked it off (saved on this device only). Sizes matter more than brand here — check the breed note on each item before you order.
+    </div>
+  </section>
+
+  <!-- 1. SLEEPING & BEDDING -->
+  <section class="category" id="sleeping">
+    <div class="category-head"><span class="ic">🛏️</span><h2>Sleeping &amp; Bedding</h2><span class="category-count">9 items</span></div>
+    <p class="category-desc">Sized right, these last a lifetime — don't go oversized, or a pup feels less secure and may use one end as a toilet.</p>
+    <div class="grid" data-cat="sleeping"></div>
+  </section>
+
+  <!-- 2. TRAVEL -->
+  <section class="category" id="travel">
+    <div class="category-head"><span class="ic">🚗</span><h2>Travel &amp; Out and About</h2><span class="category-count">3 items</span></div>
+    <p class="category-desc">A secure, lockable carrier is a must for collection day — by law your dog must be secured in the car.</p>
+    <div class="grid" data-cat="travel"></div>
+  </section>
+
+  <!-- 3. COLLAR/HARNESS/LEAD -->
+  <section class="category" id="walking">
+    <div class="category-head"><span class="ic">🦮</span><h2>Collar, Harness &amp; Lead</h2><span class="category-count">3 items</span></div>
+    <p class="category-desc">A harness is kinder for walking (weight on the shoulders, not the throat). Wait until about a week before puppy collection and ask your Breeder for exact measurements — pups are smaller than you imagine.</p>
+    <div class="grid" data-cat="walking"></div>
+  </section>
+
+  <!-- 4. TOILETING -->
+  <section class="category" id="toileting">
+    <div class="category-head"><span class="ic">🚽</span><h2>Toileting</h2><span class="category-count">3 items</span></div>
+    <p class="category-desc">Washable, reusable pads hold up far better than disposables, which get dragged and shredded.</p>
+    <div class="grid" data-cat="toileting"></div>
+  </section>
+
+  <!-- 5. FEEDING -->
+  <section class="category" id="feeding">
+    <div class="category-head"><span class="ic">🍽️</span><h2>Feeding &amp; Mealtimes</h2><span class="category-count">5 items</span></div>
+    <p class="category-desc">Ceramic bowls are heavier and can't be tipped or chewed. Snuffle and licky mats turn mealtimes into mental stimulation.</p>
+    <div class="grid" data-cat="feeding"></div>
+  </section>
+
+  <!-- 6. PLAY -->
+  <section class="category" id="play">
+    <div class="category-head"><span class="ic">🧸</span><h2>Toys for Playing</h2><span class="category-count">5 items</span></div>
+    <p class="category-desc">A variety of shapes and textures — soft toys with no plastic eyes, squeaky, rope, and "roadkill" toys with no stuffing.</p>
+    <div class="grid" data-cat="play"></div>
+  </section>
+
+  <!-- 7. TEETHING -->
+  <section class="category" id="teething">
+    <div class="category-head"><span class="ic">🦴</span><h2>Teething &amp; Dental</h2><span class="category-count">3 items</span></div>
+    <p class="category-desc">Rubber teething toys help wobbly milk teeth on their way — a stuffed Kong also earns its keep for calm alone-time.</p>
+    <div class="grid" data-cat="teething"></div>
+  </section>
+
+  <!-- 8. CHEWS & TREATS -->
+  <section class="category" id="chews">
+    <div class="category-head"><span class="ic">🍖</span><h2>Chews &amp; Natural Treats</h2><span class="category-count">6 items</span></div>
+    <p class="category-desc">Natural chews only, no rawhide, no cooked bones. Hairy chews like rabbit ears also act as a gentle natural wormer.</p>
+    <div class="grid" data-cat="chews"></div>
+  </section>
+
+  <!-- 9. TRAINING -->
+  <section class="category" id="training">
+    <div class="category-head"><span class="ic">🎯</span><h2>Training &amp; Bonding</h2><span class="category-count">4 items</span></div>
+    <p class="category-desc">Clicker training is fast, effective, and even children can join in. If you buy just one book, make it Easy Peasy Puppy Squeezy.</p>
+    <div class="grid" data-cat="training"></div>
+  </section>
+
+  <!-- 10. PARASITES -->
+  <section class="category" id="parasites">
+    <div class="category-head"><span class="ic">🐛</span><h2>Worming &amp; Parasite Prevention</h2><span class="category-count">9 items</span></div>
+    <p class="category-desc">Jan's natural-first approach — see Chapter 8 of your Owner's Guide for the full reasoning behind each product.</p>
+    <div class="grid" data-cat="parasites"></div>
+  </section>
+
+  <!-- 11. GROOMING -->
+  <section class="category" id="grooming">
+    <div class="category-head"><span class="ic">✂️</span><h2>Grooming &amp; Coat Care</h2><span class="category-count">10 items</span></div>
+    <p class="category-desc">Ears are everything for these breeds — regular plucking and cleaning is the single best way to prevent itching and infection.</p>
+    <div class="grid" data-cat="grooming"></div>
+  </section>
+
+  <!-- 12. FIRST AID -->
+  <section class="category" id="firstaid">
+    <div class="category-head"><span class="ic">🩹</span><h2>First Aid</h2><span class="category-count">1 item</span></div>
+    <p class="category-desc">Highly unlikely you'll ever need this — but good to have in the cupboard just in case (see Chapter 13, Hypoglycaemia).</p>
+    <div class="grid" data-cat="firstaid"></div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-brand">
+      <img src="heart-logo.webp" alt="SedgysMiniMe heart logo">
+      <span>SedgysMiniMe — Doggie Devotion</span>
+    </div>
+    <p>This list travels with <em>Your New Puppy — The Complete Owner's Guide</em>. If a link ever looks wrong, out of stock, or you're unsure about a product, <a class="foot-link" href="mailto:jan@sedgysminime.co.uk">message me</a> directly rather than guessing.</p>
+    <p>SedgysMiniMe : Doggie Devotion · Dumfries &amp; Galloway Council Breeding Establishment Licence No: 001673</p>
+    <div class="disclosure">
+      As an Amazon Associate I earn from qualifying purchases made through the Amazon links on this page, at no extra cost to you. I only link to products I use and recommend myself. Some links go to non-Amazon retailers (Purina, VetUK) where that's the best source for the item.
+    </div>
+  </div>
+</footer>
+
+<script>
+const ITEMS = {
+  sleeping: [
+    {name:"Crate — BieChi (24\")", note:"Metal crate, sized for BieChi pups.", url:"https://amzn.to/4wsWDo9", src:"amz"},
+    {name:"Crate — Mini Schnauzer / Toy Schnoodle / Boozer / Biewdle (30\")", note:"Also suits 2 BieChi sharing.", url:"https://amzn.to/4fOxddU", src:"amz"},
+    {name:"Puppy pen — BieChi (60×60cm panels)", note:"8-panel metal pen.", url:"https://amzn.to/4pIy1oY", src:"amz"},
+    {name:"Puppy pen — Schnauzer / Schnoodle / Boozer / Biewdle (76×60cm panels)", note:"8-panel metal pen.", url:"https://amzn.to/4wxFfPk", src:"amz"},
+    {name:"Vertical-bar puppy pen", note:"For poodle-mix climbers — no horizontal bars to lever off.", url:"https://amzn.to/44XlTqE", src:"amz"},
+    {name:"Vet bed", note:"Line the crate and carrier — never a toilet pad inside the sleeping crate.", url:"https://amzn.to/4vSVBRl", src:"amz"},
+    {name:"Fleece blankets", note:"Cover the crate on all sides except the door. No tassels, zips or buttons.", url:"https://amzn.to/4fpPuz6", src:"amz"},
+    {name:"Heat pad", note:"For the first night, to mimic the warmth of siblings.", url:"https://amzn.to/4gZ0epk", src:"amz"},
+    {name:"Snuggle Puppy", note:"Replicates mum and siblings' heartbeat and warmth.", url:"https://amzn.to/4bPVDlQ", src:"amz"}
+  ],
+  travel: [
+    {name:"Travel carrier — small, BieChi (50×35×35cm)", note:"Secure and lockable — line with vet bed.", url:"https://amzn.to/4fGSciu", src:"amz"},
+    {name:"Travel carrier — medium (60×44×44cm)", note:"For Mini Schnauzer/Schnoodle/Boozer/Biewdle etc.", url:"https://amzn.to/4pPyTIz", src:"amz"},
+    {name:"Car seatbelt harness fasteners", note:"Head-rest style — for once your pup travels calmly, not collection day.", url:"https://amzn.to/4wzmCdU", src:"amz"}
+  ],
+  walking: [
+    {name:"Collar", note:"For the ID tag — a harness is kinder for actual walking.", url:"https://amzn.to/4yJXR05", src:"amz"},
+    {name:"Harness", note:"Weight on the shoulders, not the throat.", url:"https://amzn.to/4bmb3hA", src:"amz"},
+    {name:"Lead", note:"Wait until ~1 week before collection for exact sizing.", url:"https://amzn.to/4pKnQAt", src:"amz"}
+  ],
+  toileting: [
+    {name:"Washable toilet pads — BieChi (60×60cm)", note:"Buy at least 2–3 — one for the floor and one for the wash (and one as a spare if you can stretch, just in case).", url:"https://amzn.to/4hEIu2F", src:"amz"},
+    {name:"Washable toilet pads — Schnauzer / Schnoodle / Biewdle etc (75×90cm)", note:"Buy at least 2–3.", url:"https://amzn.to/4hBPPA2", src:"amz"},
+    {name:"Poo bags", note:"Jan's own recommended brand.", url:"https://amzn.to/4wzms6c", src:"amz"}
+  ],
+  feeding: [
+    {name:"Ceramic food &amp; water bowls (5–6\" diameter)", note:"Heavier than plastic — can't be tipped or chewed. Avoid metal water bowls.", url:"https://amzn.to/4hJ1MUy", src:"amz"},
+    {name:"Purina Pro Plan Puppy Mini/Small Breed", note:"The brand Jan feeds — Purina referral link.", url:"https://shop.purina.co.uk/referrals.list?applyCode=JANET-RI-S141", src:"other"},
+    {name:"VetIQ tablets", note:"Great for settling a stressed tummy.", url:"https://amzn.to/4yQ4T3a", src:"amz"},
+    {name:"Snuffle mat", note:"Hide dry food in the textured surface for mental stimulation.", url:"https://amzn.to/4bgAvFk", src:"amz"},
+    {name:"Licky mat", note:"Ideal for wet food or sticky treats like liver paste.", url:"https://amzn.to/4pMPa0R", src:"amz"}
+  ],
+  play: [
+    {name:"Soft toys", note:"Choose ones with no plastic eyes.", url:"https://amzn.to/3RBlU0w", src:"amz"},
+    {name:"Squeaky toys", note:"—", url:"https://amzn.to/4xfDvu0", src:"amz"},
+    {name:"Rope toys", note:"—", url:"https://amzn.to/4wrKP5F", src:"amz"},
+    {name:"\"Roadkill\" toys", note:"No stuffing.", url:"https://amzn.to/4fGzqrr", src:"amz"},
+    {name:"Chiwava toys", note:"Suit young small-breed pups well.", url:"https://amzn.to/3RQ3hWP", src:"amz"}
+  ],
+  teething: [
+    {name:"Kong classic", note:"Rubber teething toy — also great stuffed for alone-time.", url:"https://amzn.to/4vVObwM", src:"amz"},
+    {name:"Nylabone", note:"Rubber teething chew.", url:"https://amzn.to/4xd1hXF", src:"amz"},
+    {name:"Kong squeezable treat", note:"Liver or peanut butter, to fill the Kong.", url:"https://amzn.to/4fuIst1", src:"amz"}
+  ],
+  chews: [
+    {name:"Rabbit ears (chew)", note:"Dried hairy chew — no more than 1–2 a week.", url:"https://amzn.to/4fKa6ky", src:"amz"},
+    {name:"Rabbit ears (worming aid)", note:"Acts as a mechanical brush through the digestive tract.", url:"https://amzn.to/4cijxqi", src:"amz"},
+    {name:"Bull's pizzle", note:"Air-dried natural chew.", url:"https://amzn.to/4wvBkT0", src:"amz"},
+    {name:"Selection of safe, long lasting natural chews", note:"Different shapes and sizes helps keep the jaw active and teeth clean.", url:"https://amzn.to/4c8jEof", src:"amz"},
+    {name:"Deer antlers (halved, easy)", note:"Avoid hard elk antlers for the first year or two.", url:"https://amzn.to/4hFLGuZ", src:"amz"},
+    {name:"Natures Menu Chicken Meaty Treats", note:"Small and moist — easily torn for clicker training.", url:"https://amzn.to/4bmMMbf", src:"amz"}
+  ],
+  training: [
+    {name:"Clicker", note:"Excellent training technique for puppies to seniors. Fast results. The clicker marks the exact instant your pup responds.", url:"https://amzn.to/4fFUM8B", src:"amz"},
+    {name:"Easy Peasy Puppy Squeezy — Steve Mann", note:"If you buy just one book, make it this one.", url:"https://amzn.to/4fs08W7", src:"amz"},
+    {name:"Clicker Training for Dogs — Karen Pryor", note:"Easy to follow guide for the clicker training technique.", url:"https://amzn.to/4yJXeDL", src:"amz"},
+    {name:"How to Housebreak Your Dog in 7 Days — Shirlee Kalstone", note:"Tip: buy used for a couple of pounds — the words inside are the same.", url:"https://amzn.to/4fIbCn4", src:"amz"}
+  ],
+  parasites: [
+    {name:"Drontal Dog Tasty Bone", note:"1st choice wormer — roundworms, hookworms, whipworms, tapeworms.", url:"https://amzn.to/45HDfrL", src:"amz"},
+    {name:"Panacur (Fenbendazole) granules", note:"2nd Choice - Covers round, hook, whip & tape-worms PLUS Lungworm & Giardia.", url:"https://amzn.to/4w9Lxnf", src:"amz"},
+    {name:"Garlic-infused Apple Cider Vinegar", note:"Natural tick/flea repellent — 1ml in drinking water daily.", url:"https://amzn.to/4z6q9lJ", src:"amz"},
+    {name:"Brewer's yeast (deactivated)", note:"¼ tsp into food daily — not baker's or active dry yeast.", url:"https://amzn.to/45tKfZh", src:"amz"},
+    {name:"Concentrated Garlic Extract", note:"For tick hotspots — ½ml mixed into food daily.", url:"https://amzn.to/45uL585", src:"amz"},
+    {name:"Parasite shampoo", note:"Good-quality option for flea/tick support.", url:"https://amzn.to/3SdVcex", src:"amz"},
+    {name:"Tick Twister (tick removal tool)", note:"Jan swears by this style of tool.", url:"https://amzn.to/44Suaw9", src:"amz"},
+    {name:"Thornit Original Ear Powder", note:"Natural, regular maintenance for itchy, waxy ears and help reduce the risk of ear mites.", url:"https://amzn.to/3TtB8Fr", src:"amz"},
+    {name:"VetUK Flea and Tick Treatment (.67ml Fipronil)", note:"Chemical back-up if parasites are detected.", url:"https://www.vetuk.co.uk/vetuk-flea-and-tick-treatment-for-small-dogs-4-pipettes-vuk0020.html", src:"other"}
+  ],
+  grooming: [
+    {name:"Slicker brush — Groom Professional Soft Curved Slicker", note:"Choose one without silicone-tipped pins.", url:"https://amzn.to/4wvoKDd", src:"amz"},
+    {name:"Metal comb", note:"A spinning-pin \"anti-tangle\" comb glides through knots.", url:"https://amzn.to/4wy2jh1", src:"amz"},
+    {name:"Face comb", note:"Gently clears eye \"gunk\" and helps prevent tear staining.", url:"https://amzn.to/4vVszAI", src:"amz"},
+    {name:"Nail clippers", note:"Cat/rabbit-style suit small pups.", url:"https://amzn.to/4xbWHsx", src:"amz"},
+    {name:"Styptic powder", note:"Stops bleeding almost instantly if you nick the quick.", url:"https://amzn.to/4xb4uH9", src:"amz"},
+    {name:"Ear powder", note:"For grip when plucking ear hair.", url:"https://amzn.to/4cPPck2", src:"amz"},
+    {name:"Ear powder (plucking &amp; maintenance)", note:"Weekly plucking prevents itching, infection and ear mites.", url:"https://amzn.to/4bPWrak", src:"amz"},
+    {name:"Puppy shampoo — Wahl Mucky Puppy", note:"Never human or baby shampoo — wrong pH.", url:"https://amzn.to/4hFoFZ6", src:"amz"},
+    {name:"Hairdryer", note:"Low/medium only — never hottest or cold.", url:"https://amzn.to/4w26bFD", src:"amz"},
+    {name:"Ear cleaning solution", note:"Pairs with regular plucking for healthy ears.", url:"https://amzn.to/4c4S635", src:"amz"}
+  ],
+  firstaid: [
+    {name:"Glucogel", note:"Emergency glucose source for suspected hypoglycaemia.", url:"https://amzn.to/4yU3au2", src:"amz"}
+  ]
+};
+
+function slug(catKey, name){
+  return catKey + "__" + name.toLowerCase().replace(/[^a-z0-9]+/g,"-").slice(0,60);
+}
+
+function render(){
+  Object.keys(ITEMS).forEach(catKey=>{
+    const grid = document.querySelector('.grid[data-cat="'+catKey+'"]');
+    if(!grid) return;
+    ITEMS[catKey].forEach(item=>{
+      const id = slug(catKey, item.name);
+      const checked = localStorage.getItem("puppylist:"+id) === "1";
+      const card = document.createElement('div');
+      card.className = "item-card" + (checked ? " checked" : "");
+      card.innerHTML = `
+        <div class="item-top">
+          <button class="check ${checked ? 'on' : ''}" aria-label="Mark as sorted" data-id="${id}">${checked ? '✓' : ''}</button>
+          <div class="item-name">${item.name}</div>
+        </div>
+        <div class="item-note">${item.note && item.note !== "—" ? item.note : ""}</div>
+        <div class="item-foot">
+          <span class="tag ${item.src === 'amz' ? 'amz' : 'other'}">${item.src === 'amz' ? 'Amazon' : 'Other retailer'}</span>
+          <a class="view-link" href="${item.url}" target="_blank" rel="noopener ${item.src==='amz' ? 'sponsored' : ''}">View item <span class="arr">→</span></a>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  });
+
+  document.querySelectorAll('.check').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const id = btn.dataset.id;
+      const key = "puppylist:"+id;
+      const isOn = localStorage.getItem(key) === "1";
+      if(isOn){
+        localStorage.removeItem(key);
+        btn.classList.remove('on');
+        btn.textContent = "";
+        btn.closest('.item-card').classList.remove('checked');
+      } else {
+        localStorage.setItem(key, "1");
+        btn.classList.add('on');
+        btn.textContent = "✓";
+        btn.closest('.item-card').classList.add('checked');
+      }
+    });
+  });
+}
+render();
+
+/* highlight active nav chip on scroll */
+const chips = Array.from(document.querySelectorAll('.trail-chip'));
+const sections = chips.map(c => document.querySelector(c.getAttribute('href')));
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    const idx = sections.indexOf(entry.target);
+    if(idx === -1) return;
+    if(entry.isIntersecting){
+      chips.forEach(c=>c.classList.remove('active'));
+      chips[idx].classList.add('active');
+    }
+  });
+}, {rootMargin:"-40% 0px -50% 0px"});
+sections.forEach(s => s && obs.observe(s));
+</script>
+
+</body>
+</html>
