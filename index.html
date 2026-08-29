@@ -119,13 +119,42 @@
     backdrop-filter:blur(6px);
     border-bottom:1px solid var(--line);
   }
-  .trail-nav{
-    display:flex; gap:8px; overflow-x:auto;
-    padding:12px 24px;
+  .trail-nav-inner{
+    position:relative;
     max-width:1080px; margin:0 auto;
+    isolation:isolate;
+  }
+  .trail-nav-inner::before, .trail-nav-inner::after{
+    content:""; position:absolute; top:0; bottom:0; width:40px; z-index:2; pointer-events:none;
+  }
+  .trail-nav-inner::before{ left:0; background:linear-gradient(to right, rgba(247,242,231,0.98), rgba(247,242,231,0)); }
+  .trail-nav-inner::after{ right:0; background:linear-gradient(to left, rgba(247,242,231,0.98), rgba(247,242,231,0)); }
+  .trail-nav{
+    position:relative; z-index:1;
+    display:flex; gap:8px; overflow-x:auto;
+    padding:12px 46px;
     scrollbar-width:none;
+    scroll-behavior:smooth;
   }
   .trail-nav::-webkit-scrollbar{display:none;}
+  .nav-arrow{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:30px; height:30px; border-radius:50%;
+    border:1px solid var(--line);
+    background:#fff;
+    color:var(--navy);
+    font-size:17px; line-height:1;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    box-shadow:0 2px 6px rgba(21,58,91,0.18);
+    z-index:3;
+    transition:opacity .15s ease, box-shadow .15s ease;
+    padding:0;
+  }
+  .nav-arrow:hover{ box-shadow:0 4px 10px rgba(21,58,91,0.28); }
+  .nav-arrow-left{ left:6px; }
+  .nav-arrow-right{ right:6px; }
+  .nav-arrow.is-hidden{ opacity:0; pointer-events:none; }
   .trail-chip{
     flex:0 0 auto;
     display:flex; align-items:center; gap:7px;
@@ -292,7 +321,9 @@
 </section>
 
 <div class="trail-nav-wrap">
-  <nav class="trail-nav" id="trailNav" aria-label="Jump to category">
+  <div class="trail-nav-inner">
+    <button class="nav-arrow nav-arrow-left is-hidden" id="navArrowLeft" type="button" aria-label="Scroll categories left">‹</button>
+    <nav class="trail-nav" id="trailNav" aria-label="Jump to category">
     <a class="trail-chip" href="#sleeping"><span class="ic">🛏️</span>Sleeping &amp; Bedding</a>
     <a class="trail-chip" href="#travel"><span class="ic">🚗</span>Travel</a>
     <a class="trail-chip" href="#walking"><span class="ic">🦮</span>Collar, Harness &amp; Lead</a>
@@ -306,6 +337,8 @@
     <a class="trail-chip" href="#grooming"><span class="ic">✂️</span>Grooming</a>
     <a class="trail-chip" href="#firstaid"><span class="ic">🩹</span>First Aid</a>
   </nav>
+    <button class="nav-arrow nav-arrow-right" id="navArrowRight" type="button" aria-label="Scroll categories right">›</button>
+  </div>
 </div>
 
 <main class="wrap">
@@ -569,6 +602,34 @@ const obs = new IntersectionObserver((entries)=>{
   });
 }, {rootMargin:"-40% 0px -50% 0px"});
 sections.forEach(s => s && obs.observe(s));
+
+/* category nav: click-to-scroll arrows + mouse-wheel horizontal scroll */
+(function(){
+  const nav = document.getElementById('trailNav');
+  const leftBtn = document.getElementById('navArrowLeft');
+  const rightBtn = document.getElementById('navArrowRight');
+  if(!nav || !leftBtn || !rightBtn) return;
+
+  function updateArrows(){
+    const max = nav.scrollWidth - nav.clientWidth - 2;
+    leftBtn.classList.toggle('is-hidden', nav.scrollLeft <= 4);
+    rightBtn.classList.toggle('is-hidden', max <= 4 || nav.scrollLeft >= max);
+  }
+  leftBtn.addEventListener('click', () => nav.scrollBy({ left: -240, behavior: 'smooth' }));
+  rightBtn.addEventListener('click', () => nav.scrollBy({ left: 240, behavior: 'smooth' }));
+  nav.addEventListener('scroll', updateArrows);
+  window.addEventListener('resize', updateArrows);
+
+  // Let an ordinary vertical mouse-wheel scroll this bar sideways when hovering it
+  nav.addEventListener('wheel', (e) => {
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      e.preventDefault();
+      nav.scrollLeft += e.deltaY;
+    }
+  }, { passive: false });
+
+  updateArrows();
+})();
 </script>
 
 </body>
