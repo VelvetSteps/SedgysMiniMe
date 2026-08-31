@@ -222,13 +222,31 @@
     background:var(--card);
     border:1px solid var(--line);
     border-radius:var(--radius);
-    padding:18px 18px 16px;
-    display:flex; flex-direction:column; gap:10px;
+    padding:0;
+    display:flex; flex-direction:column;
     box-shadow:0 2px 8px -6px rgba(21,58,91,0.18);
     transition:box-shadow .15s ease, transform .15s ease;
+    overflow:hidden;
   }
   .item-card:hover{box-shadow:var(--shadow); transform:translateY(-2px);}
   .item-card.checked{opacity:0.55;}
+  .item-img-wrap{
+    display:flex; align-items:center; justify-content:center;
+    height:140px;
+    background:#FDFBF6;
+    border-bottom:1px solid var(--line);
+    flex:0 0 auto;
+  }
+  .item-img-wrap img{
+    max-width:82%; max-height:82%;
+    object-fit:contain;
+    mix-blend-mode:multiply;
+  }
+  .item-body{
+    padding:16px 18px 16px;
+    display:flex; flex-direction:column; gap:10px;
+    flex-grow:1;
+  }
   .item-top{display:flex; align-items:flex-start; gap:10px;}
   .check{
     flex:0 0 auto;
@@ -453,86 +471,86 @@
 <script>
 const ITEMS = {
   sleeping: [
-    {name:"Crate — BieChi (24\")", note:"Metal crate, sized for BieChi pups.", url:"https://amzlink.to/az0Kvxl5JfANa", src:"amz"},
-    {name:"Crate — Mini Schnauzer / Toy Schnoodle / Boozer / Biewdle (30\")", note:"Also suits 2 BieChi sharing.", url:"https://amzlink.to/az0i20AVhP63h", src:"amz"},
-    {name:"Puppy pen — BieChi (60×60cm panels)", note:"8-panel metal pen.", url:"https://amzlink.to/az0Z5o4IXPq6Q", src:"amz"},
-    {name:"Puppy pen — Schnauzer / Schnoodle / Boozer / Biewdle (76×60cm panels)", note:"8-panel metal pen.", url:"https://amzlink.to/az08GiPiTLMF7", src:"amz"},
+    {name:"Crate — BieChi (24\")", note:"Metal crate, sized for BieChi pups.", url:"https://amzlink.to/az0Kvxl5JfANa", src:"amz", img:"sleeping-crate-biechi-24.webp"},
+    {name:"Crate — Mini Schnauzer / Toy Schnoodle / Boozer / Biewdle (30\")", note:"Also suits 2 BieChi sharing.", url:"https://amzlink.to/az0i20AVhP63h", src:"amz", img:"sleeping-crate-mini-schnauzer-toy-schnoodle-boozer-biewdle-3.webp"},
+    {name:"Puppy pen — BieChi (60×60cm panels)", note:"8-panel metal pen.", url:"https://amzlink.to/az0Z5o4IXPq6Q", src:"amz", img:"sleeping-puppy-pen-biechi-60-60cm-panels.webp"},
+    {name:"Puppy pen — Schnauzer / Schnoodle / Boozer / Biewdle (76×60cm panels)", note:"8-panel metal pen.", url:"https://amzlink.to/az08GiPiTLMF7", src:"amz", img:"sleeping-puppy-pen-schnauzer-schnoodle-boozer-biewdle-76-60c.webp"},
     {name:"Vertical-bar puppy pen", note:"For poodle-mix climbers — no horizontal bars to lever off.", url:"https://amzlink.to/az0S415b0cVSQ", src:"amz"},
-    {name:"Vet bed", note:"Line the crate and carrier — never a toilet pad inside the sleeping crate.", url:"https://amzlink.to/az0T3eMcbyPJL", src:"amz"},
-    {name:"Fleece blankets", note:"Cover the crate on all sides except the door. No tassels, zips or buttons.", url:"https://amzlink.to/az06e6vMn39bU", src:"amz"},
-    {name:"Heat pad", note:"For the first night, to mimic the warmth of siblings.", url:"https://amzlink.to/az0vpM5r706S2", src:"amz"},
-    {name:"Snuggle Puppy", note:"Replicates mum and siblings' heartbeat and warmth.", url:"https://amzlink.to/az0NGeM3aDxGc", src:"amz"}
+    {name:"Vet bed", note:"Line the crate and carrier — never a toilet pad inside the sleeping crate.", url:"https://amzlink.to/az0T3eMcbyPJL", src:"amz", img:"sleeping-vet-bed.webp"},
+    {name:"Fleece blankets", note:"Cover the crate on all sides except the door. No tassels, zips or buttons.", url:"https://amzlink.to/az06e6vMn39bU", src:"amz", img:"sleeping-fleece-blankets.webp"},
+    {name:"Heat pad", note:"For the first night, to mimic the warmth of siblings.", url:"https://amzlink.to/az0vpM5r706S2", src:"amz", img:"sleeping-heat-pad.webp"},
+    {name:"Snuggle Puppy", note:"Replicates mum and siblings' heartbeat and warmth.", url:"https://amzlink.to/az0NGeM3aDxGc", src:"amz", img:"sleeping-snuggle-puppy.webp"}
   ],
   travel: [
-    {name:"Travel carrier — small, BieChi (50×35×35cm)", note:"Secure and lockable — line with vet bed.", url:"https://amzlink.to/az0sl30TCu6Ew", src:"amz"},
-    {name:"Travel carrier — medium (60×44×44cm)", note:"For Mini Schnauzer/Schnoodle/Boozer/Biewdle etc.", url:"https://amzlink.to/az0PaORMY8seE", src:"amz"},
-    {name:"Car seatbelt harness fasteners", note:"Head-rest style — for once your pup travels calmly, not collection day.", url:"https://amzlink.to/az0kASAA8sSxu", src:"amz"}
+    {name:"Travel carrier — small, BieChi (50×35×35cm)", note:"Secure and lockable — line with vet bed.", url:"https://amzlink.to/az0sl30TCu6Ew", src:"amz", img:"travel-travel-carrier-small-biechi-50-35-35cm.webp"},
+    {name:"Travel carrier — medium (60×44×44cm)", note:"For Mini Schnauzer/Schnoodle/Boozer/Biewdle etc.", url:"https://amzlink.to/az0PaORMY8seE", src:"amz", img:"travel-travel-carrier-medium-60-44-44cm.webp"},
+    {name:"Car seatbelt harness fasteners", note:"Head-rest style — for once your pup travels calmly, not collection day.", url:"https://amzlink.to/az0kASAA8sSxu", src:"amz", img:"travel-car-seatbelt-harness-fasteners.webp"}
   ],
   walking: [
-    {name:"Collar", note:"For the ID tag — a harness is kinder for actual walking.", url:"https://amzlink.to/az0jtobIriTUA", src:"amz"},
-    {name:"Harness", note:"Weight on the shoulders, not the throat.", url:"https://amzlink.to/az02q9Mjh029m", src:"amz"},
-    {name:"Lead", note:"Wait until ~1 week before collection for exact sizing.", url:"https://amzlink.to/az0y004x7T1Wu", src:"amz"}
+    {name:"Collar", note:"For the ID tag — a harness is kinder for actual walking.", url:"https://amzlink.to/az0jtobIriTUA", src:"amz", img:"walking-collar.webp"},
+    {name:"Harness", note:"Weight on the shoulders, not the throat.", url:"https://amzlink.to/az02q9Mjh029m", src:"amz", img:"walking-harness.webp"},
+    {name:"Lead", note:"Wait until ~1 week before collection for exact sizing.", url:"https://amzlink.to/az0y004x7T1Wu", src:"amz", img:"walking-lead.webp"}
   ],
   toileting: [
-    {name:"Washable toilet pads — BieChi (60×60cm)", note:"Buy at least 2–3 — one for the floor and one for the wash (and one as a spare if you can stretch, just in case).", url:"https://amzlink.to/az0F1TqIkJz8l", src:"amz"},
-    {name:"Washable toilet pads — Schnauzer / Schnoodle / Biewdle etc (75×90cm)", note:"Buy at least 2–3.", url:"https://amzlink.to/az0gzxVbknm6I", src:"amz"},
-    {name:"Poo bags", note:"Jan's own recommended brand.", url:"https://amzlink.to/az0wetXhBIUjB", src:"amz"}
+    {name:"Washable toilet pads — BieChi (60×60cm)", note:"Buy at least 2–3 — one for the floor and one for the wash (and one as a spare if you can stretch, just in case).", url:"https://amzlink.to/az0F1TqIkJz8l", src:"amz", img:"toileting-washable-toilet-pads-biechi-60-60cm.webp"},
+    {name:"Washable toilet pads — Schnauzer / Schnoodle / Biewdle etc (75×90cm)", note:"Buy at least 2–3.", url:"https://amzlink.to/az0gzxVbknm6I", src:"amz", img:"toileting-washable-toilet-pads-schnauzer-schnoodle-biewdle-e.webp"},
+    {name:"Poo bags", note:"Jan's own recommended brand.", url:"https://amzlink.to/az0wetXhBIUjB", src:"amz", img:"toileting-poo-bags.webp"}
   ],
   feeding: [
-    {name:"Ceramic food &amp; water bowls (5–6\" diameter)", note:"Heavier than plastic — can't be tipped or chewed. Avoid metal water bowls.", url:"https://amzlink.to/az0DXb8EySwQa", src:"amz"},
+    {name:"Ceramic food &amp; water bowls (5–6\" diameter)", note:"Heavier than plastic — can't be tipped or chewed. Avoid metal water bowls.", url:"https://amzlink.to/az0DXb8EySwQa", src:"amz", img:"feeding-ceramic-food-and-water-bowls-5-6-diameter.webp"},
     {name:"Purina Pro Plan Puppy Mini/Small Breed", note:"The brand Jan feeds — Purina referral link.", url:"https://shop.purina.co.uk/referrals.list?applyCode=JANET-RI-S141", src:"other"},
-    {name:"VetIQ tablets", note:"Great for settling a stressed tummy.", url:"https://amzlink.to/az0htlNrFgcWU", src:"amz"},
-    {name:"Snuffle mat", note:"Hide dry food in the textured surface for mental stimulation.", url:"https://amzlink.to/az0MyzZFw8gfQ", src:"amz"},
-    {name:"Licky mat", note:"Ideal for wet food or sticky treats like liver paste.", url:"https://amzlink.to/az0mbEgjrU6v5", src:"amz"}
+    {name:"VetIQ tablets", note:"Great for settling a stressed tummy.", url:"https://amzlink.to/az0htlNrFgcWU", src:"amz", img:"feeding-vetiq-tablets.webp"},
+    {name:"Snuffle mat", note:"Hide dry food in the textured surface for mental stimulation.", url:"https://amzlink.to/az0MyzZFw8gfQ", src:"amz", img:"feeding-snuffle-mat.webp"},
+    {name:"Licky mat", note:"Ideal for wet food or sticky treats like liver paste.", url:"https://amzlink.to/az0mbEgjrU6v5", src:"amz", img:"feeding-licky-mat.webp"}
   ],
   play: [
-    {name:"Soft toys", note:"Choose ones with no plastic eyes.", url:"https://amzlink.to/az0bIIt8wgpvD", src:"amz"},
-    {name:"Squeaky toys", note:"—", url:"https://amzlink.to/az0ETr1ac9sMR", src:"amz"},
-    {name:"Rope toys", note:"—", url:"https://amzlink.to/az0kzMp7Xrem5", src:"amz"},
-    {name:"\"Roadkill\" toys", note:"No stuffing.", url:"https://amzlink.to/az0OKuSIvZWw6", src:"amz"},
-    {name:"Chiwava toys", note:"Suit young small-breed pups well.", url:"https://amzlink.to/az0qdOPO1ePwG", src:"amz"}
+    {name:"Soft toys", note:"Choose ones with no plastic eyes.", url:"https://amzlink.to/az0bIIt8wgpvD", src:"amz", img:"play-soft-toys.webp"},
+    {name:"Squeaky toys", note:"—", url:"https://amzlink.to/az0ETr1ac9sMR", src:"amz", img:"play-squeaky-toys.webp"},
+    {name:"Rope toys", note:"—", url:"https://amzlink.to/az0kzMp7Xrem5", src:"amz", img:"play-rope-toys.webp"},
+    {name:"\"Roadkill\" toys", note:"No stuffing.", url:"https://amzlink.to/az0OKuSIvZWw6", src:"amz", img:"play-roadkill-toys.webp"},
+    {name:"Chiwava toys", note:"Suit young small-breed pups well.", url:"https://amzlink.to/az0qdOPO1ePwG", src:"amz", img:"play-chiwava-toys.webp"}
   ],
   teething: [
-    {name:"Kong classic", note:"Rubber teething toy — also great stuffed for alone-time.", url:"https://amzlink.to/az0dFdGd0t57b", src:"amz"},
-    {name:"Nylabone", note:"Rubber teething chew.", url:"https://amzlink.to/az082aXpEHASV", src:"amz"},
-    {name:"Kong squeezable treat", note:"Liver or peanut butter, to fill the Kong.", url:"https://amzlink.to/az0yaRlvUwfIr", src:"amz"}
+    {name:"Kong classic", note:"Rubber teething toy — also great stuffed for alone-time.", url:"https://amzlink.to/az0dFdGd0t57b", src:"amz", img:"teething-kong-classic.webp"},
+    {name:"Nylabone", note:"Rubber teething chew.", url:"https://amzlink.to/az082aXpEHASV", src:"amz", img:"teething-nylabone.webp"},
+    {name:"Kong squeezable treat", note:"Liver or peanut butter, to fill the Kong.", url:"https://amzlink.to/az0yaRlvUwfIr", src:"amz", img:"teething-kong-squeezable-treat.webp"}
   ],
   chews: [
-    {name:"Rabbit ears (chew)", note:"Dried hairy chew — no more than 1–2 a week.", url:"https://amzlink.to/az0FlRNxKiYRi", src:"amz"},
-    {name:"Bull's pizzle", note:"Air-dried natural chew.", url:"https://amzlink.to/az0Xt5mtRGVzs", src:"amz"},
-    {name:"Selection of safe, long lasting natural chews", note:"Different shapes and sizes helps keep the jaw active and teeth clean.", url:"https://amzlink.to/az0GRSzEtUD6H", src:"amz"},
-    {name:"Deer antlers (halved, easy)", note:"Avoid hard elk antlers for the first year or two.", url:"https://amzlink.to/az0IY8t4lTbci", src:"amz"},
-    {name:"Natures Menu Chicken Meaty Treats", note:"Small and moist — easily torn for clicker training.", url:"https://amzlink.to/az0AaWke1a7XH", src:"amz"}
+    {name:"Rabbit ears (chew)", note:"Dried hairy chew — no more than 1–2 a week.", url:"https://amzlink.to/az0FlRNxKiYRi", src:"amz", img:"chews-rabbit-ears-chew.webp"},
+    {name:"Bull's pizzle", note:"Air-dried natural chew.", url:"https://amzlink.to/az0Xt5mtRGVzs", src:"amz", img:"chews-bulls-pizzle.webp"},
+    {name:"Selection of safe, long lasting natural chews", note:"Different shapes and sizes helps keep the jaw active and teeth clean.", url:"https://amzlink.to/az0GRSzEtUD6H", src:"amz", img:"chews-selection-of-safe-long-lasting-natural-chews.webp"},
+    {name:"Deer antlers (halved, easy)", note:"Avoid hard elk antlers for the first year or two.", url:"https://amzlink.to/az0IY8t4lTbci", src:"amz", img:"chews-deer-antlers-halved-easy.webp"},
+    {name:"Natures Menu Chicken Meaty Treats", note:"Small and moist — easily torn for clicker training.", url:"https://amzlink.to/az0AaWke1a7XH", src:"amz", img:"chews-natures-menu-chicken-meaty-treats.webp"}
   ],
   training: [
-    {name:"Clicker", note:"Excellent training technique for puppies to seniors. Fast results. The clicker marks the exact instant your pup responds.", url:"https://amzlink.to/az0DRWk7QIudh", src:"amz"},
-    {name:"Easy Peasy Puppy Squeezy — Steve Mann", note:"If you buy just one book, make it this one.", url:"https://amzlink.to/az0OeZfkciAHo", src:"amz"},
-    {name:"Clicker Training for Dogs — Karen Pryor", note:"Easy to follow guide for the clicker training technique.", url:"https://amzlink.to/az0HVNwd1EAWw", src:"amz"},
-    {name:"How to Housebreak Your Dog in 7 Days — Shirlee Kalstone", note:"Tip: buy used for a couple of pounds — the words inside are the same.", url:"https://amzlink.to/az0B9AcYPdzBZ", src:"amz"}
+    {name:"Clicker", note:"Excellent training technique for puppies to seniors. Fast results. The clicker marks the exact instant your pup responds.", url:"https://amzlink.to/az0DRWk7QIudh", src:"amz", img:"training-clicker.webp"},
+    {name:"Easy Peasy Puppy Squeezy — Steve Mann", note:"If you buy just one book, make it this one.", url:"https://amzlink.to/az0OeZfkciAHo", src:"amz", img:"training-easy-peasy-puppy-squeezy-steve-mann.webp"},
+    {name:"Clicker Training for Dogs — Karen Pryor", note:"Easy to follow guide for the clicker training technique.", url:"https://amzlink.to/az0HVNwd1EAWw", src:"amz", img:"training-clicker-training-for-dogs-karen-pryor.webp"},
+    {name:"How to Housebreak Your Dog in 7 Days — Shirlee Kalstone", note:"Tip: buy used for a couple of pounds — the words inside are the same.", url:"https://amzlink.to/az0B9AcYPdzBZ", src:"amz", img:"training-how-to-housebreak-your-dog-in-7-days-shirlee-kalsto.webp"}
   ],
   parasites: [
-    {name:"Drontal Dog Tasty Bone", note:"1st choice wormer — roundworms, hookworms, whipworms, tapeworms.", url:"https://amzlink.to/az0dz1K4xBEqb", src:"amz"},
-    {name:"Garlic-infused Apple Cider Vinegar", note:"Natural tick/flea repellent — 1ml in drinking water daily.", url:"https://amzlink.to/az0bs2sqRCvIq", src:"amz"},
-    {name:"Brewer's yeast (deactivated)", note:"¼ tsp into food daily — not baker's or active dry yeast.", url:"https://amzlink.to/az0xGly74diAv", src:"amz"},
-    {name:"Concentrated Garlic Extract", note:"For tick hotspots — ½ml mixed into food daily.", url:"https://amzlink.to/az06dWZWU93Wh", src:"amz"},
-    {name:"Parasite shampoo", note:"Good-quality option for flea/tick support.", url:"https://amzlink.to/az0v3ihzFXQfa", src:"amz"},
-    {name:"Tick Twister (tick removal tool)", note:"I swear by this Tick Remover tool.", url:"https://amzlink.to/az0PddGFdFCsi", src:"amz"},
-    {name:"Thornit Original Ear Powder", note:"Natural, regular maintenance for itchy, waxy ears and help reduce the risk of ear mites.", url:"https://amzlink.to/az0WqeVOB7cfT", src:"amz"},
+    {name:"Drontal Dog Tasty Bone", note:"1st choice wormer — roundworms, hookworms, whipworms, tapeworms.", url:"https://amzlink.to/az0dz1K4xBEqb", src:"amz", img:"parasites-drontal-dog-tasty-bone.webp"},
+    {name:"Garlic-infused Apple Cider Vinegar", note:"Natural tick/flea repellent — 1ml in drinking water daily.", url:"https://amzlink.to/az0bs2sqRCvIq", src:"amz", img:"parasites-garlic-infused-apple-cider-vinegar.webp"},
+    {name:"Brewer's yeast (deactivated)", note:"¼ tsp into food daily — not baker's or active dry yeast.", url:"https://amzlink.to/az0xGly74diAv", src:"amz", img:"parasites-brewers-yeast-deactivated.webp"},
+    {name:"Concentrated Garlic Extract", note:"For tick hotspots — ½ml mixed into food daily.", url:"https://amzlink.to/az06dWZWU93Wh", src:"amz", img:"parasites-concentrated-garlic-extract.webp"},
+    {name:"Parasite shampoo", note:"Good-quality option for flea/tick support.", url:"https://amzlink.to/az0v3ihzFXQfa", src:"amz", img:"parasites-parasite-shampoo.webp"},
+    {name:"Tick Twister (tick removal tool)", note:"I swear by this Tick Remover tool.", url:"https://amzlink.to/az0PddGFdFCsi", src:"amz", img:"parasites-tick-twister-tick-removal-tool.webp"},
+    {name:"Thornit Original Ear Powder", note:"Natural, regular maintenance for itchy, waxy ears and help reduce the risk of ear mites.", url:"https://amzlink.to/az0WqeVOB7cfT", src:"amz", img:"parasites-thornit-original-ear-powder.webp"},
     {name:"VetUK Flea and Tick Treatment (.67ml Fipronil)", note:"Chemical back-up if parasites are detected.", url:"https://www.vetuk.co.uk/vetuk-flea-and-tick-treatment-for-small-dogs-4-pipettes-vuk0020.html", src:"other"}
   ],
   grooming: [
-    {name:"Slicker brush — Groom Professional Soft Curved Slicker", note:"Choose one without silicone-tipped pins.", url:"https://amzlink.to/az0kQu63kYEBO", src:"amz"},
-    {name:"Metal comb", note:"A spinning-pin \"anti-tangle\" comb glides through knots.", url:"https://amzlink.to/az0xjWGjCnXcC", src:"amz"},
-    {name:"Face comb", note:"Gently clears eye \"gunk\" and helps prevent tear staining.", url:"https://amzlink.to/az0EaRiKTnXKA", src:"amz"},
-    {name:"Nail clippers", note:"Cat/rabbit-style suit small pups.", url:"https://amzlink.to/az0q0TdAblEIG", src:"amz"},
-    {name:"Styptic powder", note:"Stops bleeding almost instantly if you nick the quick.", url:"https://amzlink.to/az0g09NNTWMxD", src:"amz"},
-    {name:"Ear powder (plucking &amp; maintenance)", note:"Weekly plucking prevents itching, infection and ear mites.", url:"https://amzlink.to/az0m3hDjlLcGR", src:"amz"},
-    {name:"Puppy shampoo — Wahl Mucky Puppy", note:"Never human or baby shampoo — wrong pH.", url:"https://amzlink.to/az0yHpXXDh887", src:"amz"},
-    {name:"Hairdryer", note:"Low/medium only — never hottest or cold.", url:"https://amzlink.to/az0AmxkktTVpl", src:"amz"},
-    {name:"Ear cleaning solution", note:"Pairs with regular plucking for healthy ears.", url:"https://amzlink.to/az0L5EzXnJ29Z", src:"amz"}
+    {name:"Slicker brush — Groom Professional Soft Curved Slicker", note:"Choose one without silicone-tipped pins.", url:"https://amzlink.to/az0kQu63kYEBO", src:"amz", img:"grooming-slicker-brush-groom-professional-soft-curved-slicke.webp"},
+    {name:"Metal comb", note:"A spinning-pin \"anti-tangle\" comb glides through knots.", url:"https://amzlink.to/az0xjWGjCnXcC", src:"amz", img:"grooming-metal-comb.webp"},
+    {name:"Face comb", note:"Gently clears eye \"gunk\" and helps prevent tear staining.", url:"https://amzlink.to/az0EaRiKTnXKA", src:"amz", img:"grooming-face-comb.webp"},
+    {name:"Nail clippers", note:"Cat/rabbit-style suit small pups.", url:"https://amzlink.to/az0q0TdAblEIG", src:"amz", img:"grooming-nail-clippers.webp"},
+    {name:"Styptic powder", note:"Stops bleeding almost instantly if you nick the quick.", url:"https://amzlink.to/az0g09NNTWMxD", src:"amz", img:"grooming-styptic-powder.webp"},
+    {name:"Ear powder (plucking &amp; maintenance)", note:"Weekly plucking prevents itching, infection and ear mites.", url:"https://amzlink.to/az0m3hDjlLcGR", src:"amz", img:"grooming-ear-powder-plucking-and-maintenance.webp"},
+    {name:"Puppy shampoo — Wahl Mucky Puppy", note:"Never human or baby shampoo — wrong pH.", url:"https://amzlink.to/az0yHpXXDh887", src:"amz", img:"grooming-puppy-shampoo-wahl-mucky-puppy.webp"},
+    {name:"Hairdryer", note:"Low/medium only — never hottest or cold.", url:"https://amzlink.to/az0AmxkktTVpl", src:"amz", img:"grooming-hairdryer.webp"},
+    {name:"Ear cleaning solution", note:"Pairs with regular plucking for healthy ears.", url:"https://amzlink.to/az0L5EzXnJ29Z", src:"amz", img:"grooming-ear-cleaning-solution.webp"}
   ],
   firstaid: [
-    {name:"Glucogel", note:"Emergency glucose source for suspected hypoglycaemia.", url:"https://amzlink.to/az0Yy3SzeFmQ0", src:"amz"}
+    {name:"Glucogel", note:"Emergency glucose source for suspected hypoglycaemia.", url:"https://amzlink.to/az0Yy3SzeFmQ0", src:"amz", img:"firstaid-glucogel.webp"}
   ]
 };
 
@@ -549,7 +567,12 @@ function render(){
       const checked = localStorage.getItem("puppylist:"+id) === "1";
       const card = document.createElement('div');
       card.className = "item-card" + (checked ? " checked" : "");
+      const imgHtml = item.img
+        ? `<a class="item-img-wrap" href="${item.url}" target="_blank" rel="noopener ${item.src==='amz' ? 'sponsored' : ''}" tabindex="-1"><img src="${item.img}" alt="${item.name}" loading="lazy" width="240" height="240"></a>`
+        : "";
       card.innerHTML = `
+        ${imgHtml}
+        <div class="item-body">
         <div class="item-top">
           <button class="check ${checked ? 'on' : ''}" aria-label="Mark as sorted" data-id="${id}">${checked ? '✓' : ''}</button>
           <div class="item-name">${item.name}</div>
@@ -558,6 +581,7 @@ function render(){
         <div class="item-foot">
           <span class="tag ${item.src === 'amz' ? 'amz' : 'other'}">${item.src === 'amz' ? 'Amazon' : 'Other retailer'}</span>
           <a class="view-link" href="${item.url}" target="_blank" rel="noopener ${item.src==='amz' ? 'sponsored' : ''}">View item <span class="arr">→</span></a>
+        </div>
         </div>
       `;
       grid.appendChild(card);
